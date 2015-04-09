@@ -1,0 +1,12 @@
+<template name="basicLayout">
+  {{> header}}
+
+  <main class="ui page grid">
+    <div class="row">
+      <div class="center aligned starter column">
+        {{> yield 'categories'}}
+        {{> yield 'books'}}
+      </div>
+    </div>
+  </main>
+</template>
