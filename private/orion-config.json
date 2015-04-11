@@ -62,6 +62,10 @@
           {
             "name" : "modelName",
             "desc" : "What's your model called (Mongo.Collection)?"
+          },
+          {
+            "name" : "className",
+            "desc" : "What's your model's class called?"
           }
         ],
         "files" : [

@@ -1,17 +1,16 @@
-// { "path" : "models/__modelName__.js" }
-__className__ = new Mongo.Collection('__modelName__');
+Books = new Mongo.Collection('books');
 
-__className__.attachSchema(
+Books.attachSchema(
   new SimpleSchema({
     title: {
       type: String
     },
-    content: {
+    format: {
       type: String
     },
-    createdAt: {
-      type: Date,
-      denyUpdate: true
+    categoryId: {
+      type: String,
+      index: true
     }
   })
 );
@@ -19,7 +18,7 @@ __className__.attachSchema(
 // Collection2 already does schema checking
 // Add custom permission rules if needed
 if (Meteor.isServer) {
-  __className__.allow({
+  Books.allow({
     insert : function () {
       return true;
     },

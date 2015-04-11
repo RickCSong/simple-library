@@ -1,18 +1,26 @@
-Router.route('/', function () {
-  this.render('books', { to: 'books' });
-  this.render('categories', { to: 'categories' });
+Meteor.subscribe('books');
+Meteor.subscribe('categories');
 
-  SEO.set({ title: 'Home - ' + Meteor.App.NAME });
+Router.route('/', function () {
+  this.render('home');
+
+  SEO.set({ title: 'Books - ' + Meteor.App.NAME });
 });
 
-Router.route('/books', {});
+Router.route('categories/:lowerName', function() {
+  this.render('home', {
+    data: function() {
+      return Categories.findOne({lowerName: this.params.lowerName});
+    }
+  });
+}, {
+  name: 'categories.show'
+});
 
-// Router.route('/books', {
-//   layoutTemplate: 'basicLayout',
-//   path: '/:name',
-//   data: function() {
-//     console.log(this.params.name);
-//     Session.set('category', this.params.name);
-//   },
-//   template: 'basicLayout'
-// });
+AccountsTemplates.configureRoute('changePwd');
+AccountsTemplates.configureRoute('enrollAccount');
+AccountsTemplates.configureRoute('forgotPwd');
+AccountsTemplates.configureRoute('resetPwd');
+AccountsTemplates.configureRoute('signIn');
+AccountsTemplates.configureRoute('signUp');
+AccountsTemplates.configureRoute('verifyEmail');

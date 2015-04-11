@@ -1,7 +1,6 @@
-// { "path" : "models/__modelName__.js" }
-__className__ = new Mongo.Collection('__modelName__');
+Likes = new Mongo.Collection('likes');
 
-__className__.attachSchema(
+Likes.attachSchema(
   new SimpleSchema({
     title: {
       type: String
@@ -19,7 +18,7 @@ __className__.attachSchema(
 // Collection2 already does schema checking
 // Add custom permission rules if needed
 if (Meteor.isServer) {
-  __className__.allow({
+  Likes.allow({
     insert : function () {
       return true;
     },
