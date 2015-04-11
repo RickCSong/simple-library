@@ -1,4 +1,11 @@
 <template name="home">
   {{> categories}}
+
+  <div class="row">
+    <div class="column center aligned">
+      <h1> {{#if selectedCategory}} {{selectedCategory.name}} {{/if}} Books </h1>
+    </div>
+  </div>
+
   {{> books}}
 </template>

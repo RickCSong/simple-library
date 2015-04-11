@@ -2,15 +2,11 @@ Likes = new Mongo.Collection('likes');
 
 Likes.attachSchema(
   new SimpleSchema({
-    title: {
+    userId: {
       type: String
     },
-    content: {
+    bookId: {
       type: String
-    },
-    createdAt: {
-      type: Date,
-      denyUpdate: true
     }
   })
 );
@@ -30,3 +26,31 @@ if (Meteor.isServer) {
     }
   });
 }
+
+Meteor.methods({
+  toggleLike: function(bookId) {
+    if (!Meteor.userId()) {
+      throw new Meteor.Error("not-authorized");
+    }
+
+    check(bookId, String);
+
+    var userId = Meteor.userId();
+    var curLike = Likes.findOne({
+      userId: userId,
+      bookId: bookId
+    });
+
+    if (!curLike) {
+      Likes.insert({
+        userId: userId,
+        bookId: bookId
+      });
+    } else {
+      Likes.remove({
+        userId: userId,
+        bookId: bookId
+      });
+    }
+  }
+});

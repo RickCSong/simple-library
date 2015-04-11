@@ -1,7 +1,11 @@
 <template name="categories">
-  {{#each categories}}
-    {{> category}}
-  {{/each}}
+  <div class="row">
+    <div class="column center aligned">
+      {{#each categories}}
+        {{> category}}
+      {{/each}}
+    </div>
+  </div>
 </template>
 
 <template name="category">

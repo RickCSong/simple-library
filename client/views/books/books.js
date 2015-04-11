@@ -1,26 +1,50 @@
 Template['books'].helpers({
-  books: function() {
-    if (this._id) {
-      return Books.find({ categoryId: this._id });
+
+});
+
+Template['books'].events({
+
+});
+
+Template['book'].helpers({
+  liked: function() {
+    var curlike = Likes.findOne({
+      userId: Meteor.userId(),
+      bookId: this._id
+    });
+
+    return (curlike ? "active" : "");
+  },
+  numLikes: function() {
+    var numLikes = Likes.find({bookId: this._id }).count();
+
+    if (numLikes == 1) {
+      return "1 Like";
     } else {
-      return Books.find();
+      return numLikes + " Likes";
     }
   }
 });
 
-Template['books'].events({
+Template['book'].events({
+  'click .like': function(event, template) {
+    if (!Meteor.user()) {
+      return;
+    }
+    Meteor.call("toggleLike", this._id);
+  }
 });
 
-Template['books'].rendered = function() {
-  // setTimeout(function() {
-  //   console.log('HERE!!!');
-  //   $('').masonry({
-  //     itemSelector: '.item',
-  //     gutter:10
-  //   });
-  // }, 3500);
-};
 
-Template['book'].helpers({});
+// Template['books'].rendered = function() {
+//   var masonize = function() {
+//     $('.books').masonry({
+//       itemSelector: '.book',
+//       gutter: 20
+//     });
 
-Template['book'].events({});
+//     setTimeout(masonize, 3500);
+//   };
+
+//   masonize();
+// };

@@ -1,7 +1,5 @@
 Template['categories'].helpers({
-  categories: function() {
-    return Categories.find({});
-  }
+
 });
 
 Template['categories'].events({
@@ -9,9 +7,9 @@ Template['categories'].events({
 
 Template['category'].helpers({
   isActive: function() {
-    if (Template.parentData()) {
-      var parentLowerName = Template.parentData().lowerName;
-      return this.lowerName == parentLowerName ? "active" : "";
+    if (Template.parentData().selectedCategory) {
+      var selectedCategory = Template.parentData().selectedCategory;
+      return this._id == selectedCategory._id ? "active" : "";
     } else {
       return "";
     }

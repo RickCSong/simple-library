@@ -5,8 +5,16 @@ Books.attachSchema(
     title: {
       type: String
     },
+    imageUrl: {
+      type: String,
+      optional: true
+    },
     format: {
       type: String
+    },
+    description: {
+      type: String,
+      optional: true
     },
     categoryId: {
       type: String,

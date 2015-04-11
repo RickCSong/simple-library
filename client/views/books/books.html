@@ -1,12 +1,35 @@
 <template name="books">
-  <h1> {{#if name}} {{name}} {{/if}} Books </h1>
-  {{#each books}}
-    {{> book}}
-  {{/each}}
+  <div class="row">
+    <div class="column">
+      <div class="ui cards books">
+        {{#each books}}
+          {{> book}}
+        {{/each}}
+      </div>
+    </div>
+  </div>
 </template>
 
 <template name="book">
-  <div class="item">
-    {{title}}
+  <div class="ui card book">
+    <div class="image">
+      <img src="{{imageUrl}}">
+    </div>
+
+    <div class="content">
+      <div class="header"> {{title}} </div>
+      <div class="meta"> {{format}} </div>
+
+      <div class="description">
+        {{description}}
+      </div>
+    </div>
+
+    <div class="extra content">
+      <span class="left floated">
+        <i class="like icon {{liked}}"></i>
+        {{numLikes}}
+      </span>
+    </div>
   </div>
 </template>

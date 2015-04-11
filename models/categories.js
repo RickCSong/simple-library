@@ -2,16 +2,16 @@ Categories = new Mongo.Collection('categories');
 
 Categories.attachSchema(
   new SimpleSchema({
-    name: {
-      type: String
-    },
-    lowerName: {
+    slug: {
       type: String,
       index: true,
       unique: true,
       autoValue: function() {
         return this.field('name').value.toLowerCase();
       }
+    },
+    name: {
+      type: String
     }
   })
 );
