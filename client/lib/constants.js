@@ -5,6 +5,6 @@ if (Meteor.App) {
 }
 
 Meteor.App = {
-  NAME: 'Pinterest',
-  DESCRIPTION: 'A pinterest clone for practice'
+  NAME: 'Simple Library',
+  DESCRIPTION: 'A simple library for practice'
 };

@@ -36,7 +36,8 @@ Router.route('categories/:slug', function() {
   this.render('home');
 
   var selectedCategory = Categories.findOne({slug: this.params.slug});
-  SEO.set({ title: selectedCategory.name + ' Books - ' + Meteor.App.NAME });
+  var pageName = selectedCategory ? (selectedCategory.name + ' Books') : 'Books';
+  SEO.set({ title: pageName + ' - ' + Meteor.App.NAME });
 }, {
   name: 'categories.show',
   controller: 'BooksController'

@@ -35,16 +35,22 @@ Template['book'].events({
   }
 });
 
+Template['books'].onRendered(function() {
+  $('.books').masonry({
+    itemSelector: '.book',
+    gutter: 20
+  });
+});
 
-// Template['books'].rendered = function() {
-//   var masonize = function() {
-//     $('.books').masonry({
-//       itemSelector: '.book',
-//       gutter: 20
-//     });
+Template['book'].onRendered(function() {
+  var self = this;
+  $('.books').masonry('appended', self.$('.book'));
+  self.$('.book').imagesLoaded(function() {
+    $('.books').masonry();
+  });
+});
 
-//     setTimeout(masonize, 3500);
-//   };
-
-//   masonize();
-// };
+Template['book'].destroyed = (function() {
+  $('.books').masonry('remove', this.$('.book'));
+  $('.books').masonry();
+});
