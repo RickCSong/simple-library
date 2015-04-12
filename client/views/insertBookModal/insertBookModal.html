@@ -1,0 +1,21 @@
+<template name="insertBookModal">
+  <div id="insert-book-modal" class="ui modal">
+    <i class="close icon"></i>
+    <div class="header">
+      Add a new book
+    </div>
+    <div class="content">
+      {{#autoForm collection="Books" id="insertBookForm" type="insert"}}
+        {{> afQuickField name='categoryId' options=categoryOptions}}
+        {{> afQuickField name='title'}}
+        {{> afQuickField name='format' options="allowed"}}
+        {{> afQuickField name='imageUrl'}}
+        {{> afQuickField name='description' rows=6}}
+      {{/autoForm}}
+    </div>
+    <div class="actions">
+      <div class="ui button">Cancel</div>
+      <button type="submit" form="insertBookForm" class="ui green button">Save</button>
+    </div>
+  </div>
+</template>

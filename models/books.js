@@ -10,7 +10,8 @@ Books.attachSchema(
       optional: true
     },
     format: {
-      type: String
+      type: String,
+      allowedValues: ['Book', 'E-Book', 'Audiobook']
     },
     description: {
       type: String,
