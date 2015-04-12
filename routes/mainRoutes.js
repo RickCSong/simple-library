@@ -2,16 +2,7 @@ Meteor.subscribe('books');
 Meteor.subscribe('categories');
 Meteor.subscribe('likes');
 
-Router.route('/', function () {
-  this.render('home');
-
-  SEO.set({ title: 'Books - ' + Meteor.App.NAME });
-});
-
-Router.route('categories/:slug', function() {
-  this.render('home');
-}, {
-  name: 'categories.show',
+BooksController = RouteController.extend({
   data: function() {
     var selectedCategory, categories, books;
 
@@ -30,6 +21,25 @@ Router.route('categories/:slug', function() {
       books: books
     };
   }
+});
+
+Router.route('/', function () {
+  this.render('home');
+
+  SEO.set({ title: 'Books - ' + Meteor.App.NAME });
+}, {
+  name: 'home',
+  controller: 'BooksController'
+});
+
+Router.route('categories/:slug', function() {
+  this.render('home');
+
+  var selectedCategory = Categories.findOne({slug: this.params.slug});
+  SEO.set({ title: selectedCategory.name + ' Books - ' + Meteor.App.NAME });
+}, {
+  name: 'categories.show',
+  controller: 'BooksController'
 });
 
 AccountsTemplates.configureRoute('changePwd');
