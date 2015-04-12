@@ -25,11 +25,41 @@
       </div>
     </div>
 
-    <div class="extra content">
-      <span class="left floated">
-        <i class="like icon {{liked}}"></i>
-        {{numLikes}}
-      </span>
+    {{#if currentUser}}
+      <div class="extra content">
+        <span class="left floated">
+          <i class="like icon {{liked}}"></i>
+          {{numLikes}}
+        </span>
+      </div>
+    {{/if}}
+  </div>
+</template>
+
+<template name="addBookForm">
+  <div id="add-book-form" class="ui modal">
+    <i class="close icon"></i>
+    <div class="header">
+      Update Your Settings
+    </div>
+    <div class="content">
+      <div class="ui form">
+        <h4 class="ui dividing header">Give us your feedback</h4>
+        <div class="field">
+          <label>Feedback</label>
+          <textarea></textarea>
+        </div>
+        <div class="field">
+          <div class="ui checkbox checked">
+            <input type="checkbox" checked="checked" name="contact-me">
+            <label>It's okay to contact me.</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="actions">
+      <div class="ui button">Cancel</div>
+      <div class="ui green button">Send</div>
     </div>
   </div>
 </template>

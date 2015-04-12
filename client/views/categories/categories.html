@@ -4,10 +4,34 @@
       {{#each categories}}
         {{> category}}
       {{/each}}
+      <div id="add-category-button" class="circular ui icon button">
+        <i class="icon plus"></i>
+      </div>
     </div>
   </div>
 </template>
 
 <template name="category">
   <a href="{{pathFor route='categories.show'}}" class="ui blue basic button {{isActive}}">{{name}}</a>
+</template>
+
+<template name="addCategoryForm">
+  <div id="add-category-form" class="ui modal small">
+    <i class="close icon"></i>
+    <div class="header">
+      Add A New Category
+    </div>
+    <div class="content">
+      <div class="ui form">
+        <div class="field">
+          <label>Name</label>
+          <input>
+        </div>
+      </div>
+    </div>
+    <div class="actions">
+      <div class="ui button">Cancel</div>
+      <div class="ui green button">Save</div>
+    </div>
+  </div>
 </template>

@@ -1,11 +1,20 @@
 <template name="home">
-  {{> categories}}
+  <main class="ui page grid">
+    {{> categories}}
 
-  <div class="row">
-    <div class="column center aligned">
-      <h1> {{#if selectedCategory}} {{selectedCategory.name}} {{/if}} Books </h1>
+    <div class="row">
+      <div class="column center aligned">
+        <h1> {{#if selectedCategory}} {{selectedCategory.name}} {{/if}} Books </h1>
+      </div>
     </div>
-  </div>
 
-  {{> books}}
+    {{> books}}
+
+    <div id="add-book-button" class="circular ui icon button blue massive">
+      <i class="icon plus"></i>
+    </div>
+  </main>
+
+  {{> addCategoryForm}}
+  {{> addBookForm}}
 </template>

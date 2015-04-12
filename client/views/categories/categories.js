@@ -3,6 +3,9 @@ Template['categories'].helpers({
 });
 
 Template['categories'].events({
+  'click #add-category-button': function() {
+    $('#add-category-form').modal('show');
+  }
 });
 
 Template['category'].helpers({
@@ -17,4 +20,5 @@ Template['category'].helpers({
 });
 
 Template['category'].events({
+
 });
