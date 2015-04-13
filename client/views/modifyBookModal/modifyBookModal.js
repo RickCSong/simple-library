@@ -32,7 +32,6 @@ Template['modifyBookModal'].events({
 
 Template['modifyBookModal'].onRendered(function() {
   $('#modify-book-modal').modal({
-    detachable: false,
     onShow: function() {
       AutoForm.resetForm("modifyBookForm");
     }

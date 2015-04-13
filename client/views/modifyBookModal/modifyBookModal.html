@@ -1,6 +1,11 @@
-<template name="modifyBookModal">
+<template name="modal">
   <div id="modify-book-modal" class="ui modal">
-    <i class="close icon"></i>
+    {{> modifyBookModal}}
+  </div>
+</template>
+
+<template name="modifyBookModal">
+  <i class="close icon"></i>
     <div class="header">
       {{header}}
     </div>
@@ -20,6 +25,5 @@
 
       <div class="ui button">Cancel</div>
       <button type="submit" form="modifyBookForm" class="ui green button">Save</button>
-    </div>
   </div>
 </template>
