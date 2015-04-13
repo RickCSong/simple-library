@@ -36,21 +36,35 @@ Template['book'].events({
 });
 
 Template['books'].onRendered(function() {
-  $('.books').masonry({
-    itemSelector: '.book',
-    gutter: 20
-  });
 });
 
 Template['book'].onRendered(function() {
+  $('.books').masonry({
+    itemSelector: '.book',
+    isFitWidth: true,
+    gutter: 20
+  });
+
   var self = this;
-  $('.books').masonry('appended', self.$('.book'));
+  var masonryElements = $('.books').masonry('getItemElements');
+  var masonryBookIds = _.map(masonryElements, function(elt) { return elt.id; });
+  var currentBookId = self.$('.book').attr('id');
+
+  if (!_.contains(masonryBookIds, currentBookId)) {
+    $('.books').masonry('appended', self.$('.book'));
+  }
+  self.$('.book').removeClass('hidden');
   self.$('.book').imagesLoaded(function() {
     $('.books').masonry();
   });
 });
 
 Template['book'].destroyed = (function() {
+  $('.books').masonry({
+    itemSelector: '.book',
+    isFitWidth: true,
+    gutter: 20
+  });
   $('.books').masonry('remove', this.$('.book'));
   $('.books').masonry();
 });
