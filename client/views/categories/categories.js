@@ -1,5 +1,11 @@
 Template['categories'].helpers({
-
+  isEverything: function() {
+    if (this.selectedCategory) {
+      return "";
+    } else {
+      return "active";
+    }
+  }
 });
 
 Template['categories'].events({

@@ -1,6 +1,7 @@
 <template name="categories">
   <div class="row">
     <div class="column center aligned">
+      <a href="{{pathFor route='home'}}" class="ui blue basic button {{isEverything}}">Everything</a>
       {{#each categories}}
         {{> category}}
       {{/each}}
