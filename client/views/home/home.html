@@ -1,13 +1,6 @@
 <template name="home">
   <main class="ui page grid">
     {{> categories}}
-
-    <div class="row">
-      <div class="column center aligned">
-        <h1> {{#if selectedCategory}} {{selectedCategory.name}} {{/if}} Books </h1>
-      </div>
-    </div>
-
     {{> books}}
 
     <div id="insert-book-button" class="circular ui icon button blue massive">
@@ -15,5 +8,5 @@
     </div>
   </main>
 
-  {{> insertBookModal}}
+  {{> modifyBookModal}}
 </template>

@@ -28,13 +28,19 @@ Books.attachSchema(
 // Add custom permission rules if needed
 if (Meteor.isServer) {
   Books.allow({
-    insert : function () {
+    insert : function (userId, doc) {
       return true;
     },
-    update : function () {
+    update : function (userId, doc, fieldNames, modifier) {
+      if (!userId) {
+        throw new Meteor.Error("not-authorized");
+      }
       return true;
     },
-    remove : function () {
+    remove : function (userId, doc) {
+      if (!userId) {
+        throw new Meteor.Error("not-authorized");
+      }
       return true;
     }
   });

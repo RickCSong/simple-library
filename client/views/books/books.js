@@ -27,15 +27,13 @@ Template['book'].helpers({
 });
 
 Template['book'].events({
-  'click .like': function(event, template) {
-    if (!Meteor.user()) {
-      return;
-    }
+  'click .like.icon': function(event, template) {
     Meteor.call("toggleLike", this._id);
+  },
+  'click .edit.icon': function(event, template) {
+    Session.set('modifyBookModal.doc', this);
+    $('#modify-book-modal').modal('show');
   }
-});
-
-Template['books'].onRendered(function() {
 });
 
 Template['book'].onRendered(function() {
@@ -59,7 +57,7 @@ Template['book'].onRendered(function() {
   });
 });
 
-Template['book'].destroyed = (function() {
+Template['book'].onDestroyed(function() {
   $('.books').masonry({
     itemSelector: '.book',
     isFitWidth: true,

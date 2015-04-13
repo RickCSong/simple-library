@@ -3,6 +3,7 @@ Template['home'].helpers({
 
 Template['home'].events({
   'click #insert-book-button': function() {
-    $('#insert-book-modal').modal('show');
+    Session.set('modifyBookModal.doc', null);
+    $('#modify-book-modal').modal('show');
   }
 });

@@ -1,9 +1,9 @@
+@import 'variables.less';
+
 // Main styles
 
-#insert-book-button {
-  position: fixed;
-  bottom: 1em;
-  left: 1em;
+.hidden {
+  visibility: hidden !important;
 }
 
 .books {
@@ -13,8 +13,17 @@
 .ui.card.book {
   float: left;
   margin: 1em 0em;
+
+  .edit.icon {
+    &:hover {
+      color: @primaryLinkHoverColor;
+      cursor: pointer;
+    }
+  }
 }
 
-.hidden {
-  visibility: hidden !important;
+#insert-book-button {
+  position: fixed;
+  bottom: 1em;
+  left: 1em;
 }
