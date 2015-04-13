@@ -26,6 +26,7 @@ Template['modifyBookModal'].events({
   'click #remove-book-button': function(event, template) {
     var book = Session.get('modifyBookModal.doc');
     Books.remove(book._id);
+    $('#modify-book-modal').modal('hide');
   }
 });
 
