@@ -30,3 +30,6 @@ service-configuration
 accounts-ui
 mrt:jquery-imagesloaded
 jameslefrere:autoform-semantic-ui
+cfs:standard-packages
+cfs:gridfs
+cfs:autoform

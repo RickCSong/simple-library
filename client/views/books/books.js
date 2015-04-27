@@ -7,6 +7,11 @@ Template['books'].events({
 });
 
 Template['book'].helpers({
+  image: function() {
+    return Images.findOne({
+      _id: this.imageId
+    });
+  },
   liked: function() {
     var curlike = Likes.findOne({
       userId: Meteor.userId(),

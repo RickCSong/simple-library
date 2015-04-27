@@ -1,6 +1,7 @@
 Meteor.subscribe('books');
 Meteor.subscribe('categories');
 Meteor.subscribe('likes');
+Meteor.subscribe('images');
 
 BooksController = RouteController.extend({
   data: function() {

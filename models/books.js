@@ -5,9 +5,15 @@ Books.attachSchema(
     title: {
       type: String
     },
-    imageUrl: {
+    imageId: {
       type: String,
-      optional: true
+      optional: true,
+      autoform: {
+        afFieldInput: {
+          type: 'cfs-file',
+          collection: 'images'
+        }
+      },
     },
     format: {
       type: String,
